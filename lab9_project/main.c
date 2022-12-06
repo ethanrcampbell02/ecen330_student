@@ -8,13 +8,11 @@
 // Interrupt service routine to update game state
 void game_isr() {
   intervalTimer_ackInterrupt(INTERVAL_TIMER_0);
-  gameControl_tick();
+  // gameControl_tick();
 }
 
 // Initialize drivers and the game control, run the game
 int main() {
-    display_init();
-    buttons_init();
     gameControl_init();
 
     // Initialize timer interrupts

@@ -1,29 +1,43 @@
 #ifndef PILL_H
 #define PILL_H
 
-// Pills are made up of two tile entities
-typedef struct {
-    int pill_half_1;
-    int pill_half_2;
-} pill_t;
+#include "board.h"
 
-// Defining pill movement directions
+// Orientations of the pill 
+typedef enum {
+    ORIENTATION_HORIZONTAL,
+    ORIENTATION_VERTICAL,
+    ORIENTATION_SINGLE,
+    ORIENTATION_EMPTY
+} orientation_t;
+
+// Defining pill movement types (shifts and rotations)
 typedef enum {
     MOVE_DOWN,
     MOVE_RIGHT,
-    MOVE_LEFT
-} move_direction_t;
-
-// Defining pill rotation directions
-typedef enum {
+    MOVE_LEFT,
     ROTATE_CLOCKWISE,
     ROTATE_COUNTERCLOCKWISE
-} rotate_direction_t;
+} move_type_t;
 
-// Move the pill right, left, or down
-void pill_move(pill_t *pill, move_direction_t direction);
+// Pills are made up of two tile entities 
+typedef struct {
+    entity_t *pill_half_1;
+    entity_t *pill_half_2;
+    orientation_t orientation;
+} pill_t;
 
-// Rotate the pill clockwise or counterclockwise
-void pill_rotate(pill_t *pill, rotate_direction_t direction);
+// Initializes the given pill to the hidden state
+void pill_initHidden(pill_t *pill);
+
+// Initializes the given pill at the top of the screen
+void pill_initTop(pill_t *pill, board_t *board);
+
+// Move the pill right, left, or down or rotate CW or CCW
+// * Moves: down, left, right
+// * Rotations: clockwise, counterclockwise
+void pill_move(pill_t *pill, board_t *board, move_type_t direction);
+
+void pill_test(pill_t *pill);
 
 #endif /* PILL_H */

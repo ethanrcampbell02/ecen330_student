@@ -1,6 +1,27 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
+// Timing details
 #define CONFIG_GAME_TIMER_PERIOD 45.0E-3
+
+// Board parameters
+#define CONFIG_BOARD_WIDTH_TILES 8
+#define CONFIG_BOARD_HEIGHT_TILES 16
+
+// Board graphics parameters
+#define CONFIG_TILE_WIDTH 13
+#define CONFIG_TILE_HEIGHT 13
+#define CONFIG_BOARD_TOP_LEFT_X 10
+#define CONFIG_BOARD_TOP_LEFT_Y 10
+#define CONFIG_BACKGROUND_COLOR DISPLAY_BLACK
+#define CONFIG_BOARD_LINE_COLOR DISPLAY_WHITE
+
+// Location for pill drop
+#define CONFIG_PILL_START_TILE_X (CONFIG_BOARD_WIDTH_TILES / 2 - 1)
+#define CONFIG_PILL_START_TILE_Y 0
+
+// Virus parameters
+#define CONFIG_NUM_VIRUSES 15
+#define CONFIG_VIRUS_TOP_CUTOFF 8
 
 #endif /* CONFIG_H */
